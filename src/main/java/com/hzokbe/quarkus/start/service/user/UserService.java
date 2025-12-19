@@ -1,6 +1,6 @@
 package com.hzokbe.quarkus.start.service.user;
 
-import com.hzokbe.quarkus.start.dto.user.CreateUserResponseDTO;
+import com.hzokbe.quarkus.start.dto.user.response.CreateUserResponseDTO;
 import com.hzokbe.quarkus.start.dto.user.request.CreateUserRequestDTO;
 import com.hzokbe.quarkus.start.exception.user.AlreadyRegisteredUserException;
 import com.hzokbe.quarkus.start.model.user.User;
