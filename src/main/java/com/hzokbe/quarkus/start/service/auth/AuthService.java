@@ -26,6 +26,10 @@ public class AuthService {
             throw new InvalidCredentialsException();
         }
 
-        return Jwt.claim("sub", dto.getUsername()).expiresIn(Duration.ofHours(1)).sign();
+        return Jwt
+                .issuer("quarkus-start")
+                .claim("sub", dto.getUsername())
+                .expiresIn(Duration.ofHours(1))
+                .sign();
     }
 }
