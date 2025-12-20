@@ -3,3 +3,9 @@ smallrye:
     sign:
       key:
         location: private.key
+mp:
+  jwt:
+    verify:
+      issuer: quarkus-start
+      publickey:
+        location: public.key

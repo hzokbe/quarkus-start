@@ -28,6 +28,7 @@ public class AuthService {
         return Jwt
                 .issuer("quarkus-start")
                 .claim("sub", dto.getUsername())
+                .groups(user.groups)
                 .expiresIn(Duration.ofHours(1))
                 .sign();
     }

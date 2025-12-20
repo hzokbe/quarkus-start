@@ -3,6 +3,7 @@ package com.hzokbe.quarkus.start.model.user;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.*;
 
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -20,4 +21,6 @@ public class User extends PanacheEntityBase {
 
     @Column(nullable = false)
     public String password;
+
+    public Set<String> groups;
 }

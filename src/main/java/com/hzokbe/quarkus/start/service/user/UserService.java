@@ -10,6 +10,8 @@ import com.hzokbe.quarkus.start.model.user.User;
 import com.hzokbe.quarkus.start.service.password.PasswordService;
 import jakarta.enterprise.context.ApplicationScoped;
 
+import java.util.Set;
+
 @ApplicationScoped
 public class UserService {
     private final PasswordService passwordService;
@@ -64,6 +66,8 @@ public class UserService {
         user.email = dto.getEmail();
 
         user.password = passwordService.hash(dto.getPassword());
+
+        user.groups = Set.of("user");
 
         User.persist(user);
 

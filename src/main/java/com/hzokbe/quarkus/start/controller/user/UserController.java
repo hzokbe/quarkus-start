@@ -2,6 +2,7 @@ package com.hzokbe.quarkus.start.controller.user;
 
 import com.hzokbe.quarkus.start.dto.user.create.request.CreateUserRequestDTO;
 import com.hzokbe.quarkus.start.service.user.UserService;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
@@ -16,6 +17,7 @@ public class UserController {
     }
 
     @POST
+    @RolesAllowed({ "admin" })
     @Transactional
     public Response createUser(CreateUserRequestDTO dto) {
         return Response.status(Response.Status.CREATED).entity(service.create(dto)).build();
