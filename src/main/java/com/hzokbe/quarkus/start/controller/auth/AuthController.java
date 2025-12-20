@@ -1,7 +1,7 @@
 package com.hzokbe.quarkus.start.controller.auth;
 
 import com.hzokbe.quarkus.start.dto.auth.sign.in.SignInRequestDTO;
-import com.hzokbe.quarkus.start.dto.user.request.CreateUserRequestDTO;
+import com.hzokbe.quarkus.start.dto.user.create.request.CreateUserRequestDTO;
 import com.hzokbe.quarkus.start.service.auth.AuthService;
 import com.hzokbe.quarkus.start.service.user.UserService;
 import jakarta.transaction.Transactional;

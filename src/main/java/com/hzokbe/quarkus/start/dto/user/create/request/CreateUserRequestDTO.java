@@ -1,4 +1,4 @@
-package com.hzokbe.quarkus.start.dto.user.request;
+package com.hzokbe.quarkus.start.dto.user.create.request;
 
 public class CreateUserRequestDTO {
     private String username;

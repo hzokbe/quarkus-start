@@ -1,6 +1,6 @@
 package com.hzokbe.quarkus.start.controller.user;
 
-import com.hzokbe.quarkus.start.dto.user.request.CreateUserRequestDTO;
+import com.hzokbe.quarkus.start.dto.user.create.request.CreateUserRequestDTO;
 import com.hzokbe.quarkus.start.service.user.UserService;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.POST;

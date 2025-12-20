@@ -1,4 +1,4 @@
-package com.hzokbe.quarkus.start.dto.user.response;
+package com.hzokbe.quarkus.start.dto.user.create.response;
 
 import java.util.UUID;
 
