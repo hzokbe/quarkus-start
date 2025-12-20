@@ -12,7 +12,6 @@ import java.time.Duration;
 
 @ApplicationScoped
 public class AuthService {
-
     public String signIn(SignInRequestDTO dto) {
         var optionalUser = User.find("username", dto.getUsername()).firstResultOptional();
 
