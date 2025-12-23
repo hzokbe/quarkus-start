@@ -28,11 +28,11 @@ public class UserService {
         var username = dto.getUsername();
 
         if (username == null || username.isBlank()) {
-            throw new InvalidUsernameException("username cannot be null or blank");
+            throw new InvalidUsernameException("Username cannot be null or blank");
         }
 
         if (!username.matches("^[A-Za-z0-9_]+$")) {
-            throw new InvalidUsernameException("username must contain only letters, numbers, and underscores");
+            throw new InvalidUsernameException("Username must contain only letters, numbers, and underscores");
         }
 
         if (User.count("username", dto.getUsername()) != 0) {
@@ -42,11 +42,11 @@ public class UserService {
         var email = dto.getEmail();
 
         if (email == null || email.isBlank()) {
-            throw new InvalidEmailException("email cannot be null or blank");
+            throw new InvalidEmailException("E-mail cannot be null or blank");
         }
 
         if (!email.matches("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$")) {
-            throw new InvalidEmailException("invalid email");
+            throw new InvalidEmailException("Invalid email");
         }
 
         if (User.count("email", dto.getEmail()) != 0) {
@@ -56,11 +56,11 @@ public class UserService {
         var password = dto.getPassword();
 
         if (password == null || password.isBlank()) {
-            throw new InvalidPasswordException("password cannot be null or blank");
+            throw new InvalidPasswordException("Password cannot be null or blank");
         }
 
         if (password.length() < 8) {
-            throw new InvalidPasswordException("password must be at least 8 characters long");
+            throw new InvalidPasswordException("Password must be at least 8 characters long");
         }
 
         var user = new User();
