@@ -1,5 +1,6 @@
 package com.hzokbe.quarkus.start.service.user;
 
+import com.hzokbe.quarkus.start.dto.user.UserResponseDTO;
 import com.hzokbe.quarkus.start.dto.user.create.response.CreateUserResponseDTO;
 import com.hzokbe.quarkus.start.dto.user.create.request.CreateUserRequestDTO;
 import com.hzokbe.quarkus.start.exception.user.AlreadyRegisteredUserException;
@@ -10,6 +11,7 @@ import com.hzokbe.quarkus.start.model.user.User;
 import com.hzokbe.quarkus.start.service.password.PasswordService;
 import jakarta.enterprise.context.ApplicationScoped;
 
+import java.util.List;
 import java.util.Set;
 
 @ApplicationScoped
@@ -76,5 +78,17 @@ public class UserService {
                 user.username,
                 user.email
         );
+    }
+
+    public List<UserResponseDTO> getAllUsers() {
+        return User.findAll().stream().map(e -> {
+            var user = (User) e;
+
+            return new UserResponseDTO(
+                    user.id,
+                    user.username,
+                    user.email
+            );
+        }).toList();
     }
 }
