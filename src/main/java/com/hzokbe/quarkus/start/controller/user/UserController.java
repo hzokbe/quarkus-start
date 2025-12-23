@@ -7,7 +7,10 @@ import jakarta.transaction.Transactional;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.core.Response;
+
+import java.util.UUID;
 
 @Path("/users")
 public class UserController {
@@ -28,5 +31,12 @@ public class UserController {
     @RolesAllowed({ "admin" })
     public Response getAllUsers() {
         return Response.status(Response.Status.OK).entity(service.getAllUsers()).build();
+    }
+
+    @GET
+    @Path("/{id}")
+    @RolesAllowed({ "admin" })
+    public Response getUserById(@PathParam("id") UUID id) {
+        return Response.status(Response.Status.OK).entity(service.getUserById(id)).build();
     }
 }

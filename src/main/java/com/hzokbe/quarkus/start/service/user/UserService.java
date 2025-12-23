@@ -3,6 +3,7 @@ package com.hzokbe.quarkus.start.service.user;
 import com.hzokbe.quarkus.start.dto.user.UserResponseDTO;
 import com.hzokbe.quarkus.start.dto.user.create.response.CreateUserResponseDTO;
 import com.hzokbe.quarkus.start.dto.user.create.request.CreateUserRequestDTO;
+import com.hzokbe.quarkus.start.exception.UserNotFoundException;
 import com.hzokbe.quarkus.start.exception.user.AlreadyRegisteredUserException;
 import com.hzokbe.quarkus.start.exception.user.email.InvalidEmailException;
 import com.hzokbe.quarkus.start.exception.user.password.InvalidPasswordException;
@@ -13,6 +14,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 
 @ApplicationScoped
 public class UserService {
@@ -90,5 +92,21 @@ public class UserService {
                     user.email
             );
         }).toList();
+    }
+
+    public UserResponseDTO getUserById(UUID id) {
+        var optionalUser = User.findByIdOptional(id);
+
+        if (optionalUser.isEmpty()) {
+            throw new UserNotFoundException();
+        }
+
+        var user = (User) optionalUser.get();
+
+        return new UserResponseDTO(
+                user.id,
+                user.username,
+                user.email
+        );
     }
 }
